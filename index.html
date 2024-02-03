@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelby</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+     <!-- MAIN -->
+
+    <section class="main">
+
+        <!-- BACKGROUND -->
+        <video autoplay muted loop id="myVideo">
+            <source src="/img/background.mp4" type="video/mp4">
+        </video>
+        <!-- BACKGROUND -->
+
+
+        <!-- HEADER -->
+        <header>
+            <div class="title">
+                <h1>Nelby</h1>
+            </div>
+
+            <div class="navbar">
+                <ul>
+                    <li class= "one"><a href=""><i class="fa-solid fa-magnifying-glass"></i> Research</a></li>
+                    <li class= "one"><a href="">Turbinas</a></li>
+                    <li class= "one"><a href="">Conversión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- HEADER -->
+
+        <div class="content">
+            <h1 id="titulo"></h1>
+        </div>
+
+        <div class="content2" id="blink">
+            <i class="fa-solid fa-angle-down"></i>
+        </div>
+
+    </section>
+
+     <!-- MAIN -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <script>
+ function escribirEnPantalla(texto) {
+    let arr = texto.split("");
+    let i = 0;
+    let tituloElement = document.getElementById("titulo");
+
+    function escribirCaracter() {
+        if (i < arr.length) {
+            if (arr[i] == " ") {
+                tituloElement.innerHTML += arr[i];
+                tituloElement.innerHTML += arr[i + 1];
+                i += 2;
+            } else {
+                tituloElement.innerHTML += arr[i];
+                i++;
+            }
+        } else {
+            // Borrar el contenido y reiniciar el intervalo después de 4.5 segundos
+            setTimeout(() => {
+                tituloElement.innerHTML = "";
+                i = 0;
+                setTimeout(() => {
+                    intervalo = setInterval(escribirCaracter, 250); // Iniciar la escritura nuevamente
+                }, 250);
+            }, 4500);
+            clearInterval(intervalo); // Detener el intervalo mientras se borra
+        }
+    }
+
+    // Iniciamos el intervalo
+    let intervalo = setInterval(escribirCaracter, 250);
+}
+
+// Llamamos a la función principal una vez para iniciar el proceso
+escribirEnPantalla("¿Que hay detrás?");
+
+
+
+
+     </script>
+
+    <script>
+         window.setInterval (BlinkIt, 500);
+        var color = "white";
+         function BlinkIt () {
+             var blink = document.getElementById ("blink");
+             color = (color == "#ffffff")? "#fff892" : "#ffffff";
+             blink.style.color = color;
+         }
+    </script> 
+
+
+     <script src="https://kit.fontawesome.com/53bd1a4a93.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
